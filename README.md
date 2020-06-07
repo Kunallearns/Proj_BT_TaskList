@@ -14,3 +14,6 @@ Add CDNs: (content delivery netrwork):
 4)	Materialise also needs JQuery as a dependancy hence Jquery CDN. Make sure Jquery comes as one item above before JavaScript 	CDN
 
 5)	fontawesome CDN: goes in the header: after materialise CDN
+
+
+Methods used: 
