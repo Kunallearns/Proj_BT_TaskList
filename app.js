@@ -22,6 +22,7 @@ function loadEventListeners() {
     /* 2 */
     form.addEventListener("submit", addTask)
     //  Add Task event
+    //  Store in local Storage too
 
     /* 3 */
     taskList.addEventListener("click", removeTask)
