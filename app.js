@@ -26,10 +26,12 @@ function loadEventListeners() {
     /* 3 */
     taskList.addEventListener("click", removeTask)
     //  Remove task event  - each specific task by clicking on x icon
+    // and remove it from local storage too
 
     /* 4 */
     clearBtn.addEventListener("click", clearTasks)
     //Remove the entire list by clicking on clear Tasks Button
+    // and remove it from local storage too
 
     /* 5 */
     filter.addEventListener("keyup", filterTasks)
@@ -54,7 +56,7 @@ function getTasks() {
         //  create a text node and append to the li
 
 
-        /*Additional note: the arguement 'taskInput.value' has been replaced by task Because there is NO input value coming from user BUT only the task info which is already stored in LS' */
+        /*Additional note: the arguement 'taskInput.value' has been replaced by task because there is NO input value coming from user BUT only the task info which is already stored in LS' */
         li.appendChild(document.createTextNode(task))
         //  Create new link element - the delete 'X' icon at the end 
         const link = document.createElement("a")
@@ -86,17 +88,17 @@ function addTask(e) {
     link.className = "delete-item secondary-content" /* Add class, dont use classList.add - would not work the intended way */
     link.innerHTML = '<i class ="fa fa-remove"></i>' /* Add icon html */
     li.appendChild(link) /* Add link to li */
-    taskList.appendChild(li); /* Add li to variable taskInput above so that the list starts forming */
+    taskList.appendChild(li); /* Add li to variable taskInput above so that the list starts tasking intended shape */
 
     //  Store in Local Storage:
     storeTaskInLocalStorage(taskInput.value)
 
-    taskInput.value = "" /* Clear Input */
+    taskInput.value = "" /* Clear Input to start afresh*/
 
     e.preventDefault()
 }
 
-//  Store Task
+//  Store Task in Local storage
 function storeTaskInLocalStorage(task) {
     let tasks;
     if (localStorage.getItem("tasks") === null) {
