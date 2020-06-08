@@ -5,7 +5,7 @@ Proj_BT_TaskList_Udemy
 Functionalities created:
 
 1)  DOMContentLoaded: Load previously existing entries - get tasks from Local storage : event"DOMContentLoaded"
-2)  Add New task: Event "submit"
+2)  Add New task: Event "submit" and ADD to local storage too
 3)  Remove task Event: from UI AND from the Local storage : event: "click" 
 4)  Clear all tasks through clearTask Button from UI: event "click" AND from the local Storage
 5)  FILTER functionality: filter the task events : event "keyup"
