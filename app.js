@@ -14,29 +14,23 @@ loadEventListeners(); /* Load all event listners */
 /* define LoadEventListener function */
 function loadEventListeners() {
 
-    /* 1 */
+    /* step 1 */
     document.addEventListener("DOMContentLoaded", getTasks)
-    // DOM event listner : Load all previously existing DOM entries
-    // DOMContent Loaded is an event that gets loaded after the DOM is created i.e. when the page gets loaded 
 
-    /* 2 */
+
+    /* step 2 */
     form.addEventListener("submit", addTask)
-    //  Add Task event
-    //  Store in local Storage too
 
-    /* 3 */
+
+    /* step 3 */
     taskList.addEventListener("click", removeTask)
-    //  Remove task event  - each specific task by clicking on x icon
-    // and remove it from local storage too
 
-    /* 4 */
+    /* step 4 */
     clearBtn.addEventListener("click", clearTasks)
-    //Remove the entire list by clicking on clear Tasks Button
-    // and remove it from local storage too
 
-    /* 5 */
+    /* step 5 */
     filter.addEventListener("keyup", filterTasks)
-    //Filter the Task events 
+
 }
 
 
@@ -56,8 +50,8 @@ function getTasks() {
         li.className = "collection-item"
         //  create a text node and append to the li
 
+        /* step 6 */
 
-        /*Additional note: the arguement 'taskInput.value' has been replaced by task because there is NO input value coming from user BUT only the task info which is already stored in LS' */
         li.appendChild(document.createTextNode(task))
         //  Create new link element - the delete 'X' icon at the end 
         const link = document.createElement("a")
@@ -111,20 +105,18 @@ function storeTaskInLocalStorage(task) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+/* step 7: */
 
-/* removeTask: remove task  Since they are multiple items and can be dynamic in nature if.e. they can be added as per user discretion, we'll havr to rely on event delegation and we need to use the event listener on parent UL with the class "taskList" itself  */
 function removeTask(e) {
     console.log(e)
     if (e.target.parentElement.classList.contains("delete-item")) {
         if (confirm("Are you sure ?")) {
             e.target.parentElement.parentElement.remove()
-            /* This is being removed from the DOM through the above code. 
-            parent of the parent is the LI item which needs to be wiped off when the click happens */
+            /* step 8 */
 
 
             removeTaskFromLocalStorage(e.target.parentElement.parentElement)
-            /* Remove from LS(Local storage) */
-            /* there is no particular ID that can be passed as an argument for easy hooking, thus treating the very li that has been created above as the refrence point */
+            /* Step 9 */
 
 
         }
@@ -155,9 +147,9 @@ function clearTasks(e) {
     console.log(e)
     if (e.target.classList.contains("clear-tasks")) {
         if (confirm("Are you sure?")) {
-            // taskList.innerHTML = "" /* can do this or below - both work */
 
-            //  but the while loop is faster: per the defination below, the loop would continue to work till there is s a first child of the taskList
+            /* Step 10 */
+
             while (taskList.firstChild) {
 
                 taskList.removeChild(taskList.firstChild)
@@ -179,8 +171,8 @@ function filterTasks(e) {
 
     //  The lowerCase() has been used to facilitate easy comparison
 
+    /* Step 11 */
 
-    /*In below, you can use forEach because querySelectorAll returns a NodeList and not HTML collection and forEach() can be used on NodeList. The same would NOT be true for getElementsByClass or tag because that wouldve returned HTML collection and then you wouldve had to convert it to array first in order to apply forEach() */
     document.querySelectorAll(".collection-item").forEach(function (task) {
         const item = task.firstChild.textContent;
         console.log(task.firstChild)
