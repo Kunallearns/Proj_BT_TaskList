@@ -1,36 +1,31 @@
 //  Define UI vars - These are the UI variables we'll need
+
+/*To access the parent Form */
 const form = document.querySelector("#task-form")
+/*To access the new tasks being entered by the user */
 const taskInput = document.querySelector("#task")
+/*To access the Filter - user input */
 const filter = document.querySelector("#filter")
+/* To access the ul (newly added li elements) */
 const taskList = document.querySelector(".collection")
+/* To access the clear task button */
 const clearBtn = document.querySelector(".clear-tasks")
 
 //  function to load all event listners
-
-
 loadEventListeners(); /* Load all event listners */
 
 
 /* define LoadEventListener function */
 function loadEventListeners() {
-
-    /* step 1 */
     document.addEventListener("DOMContentLoaded", getTasks)
 
-
-    /* step 2 */
     form.addEventListener("submit", addTask)
 
-
-    /* step 3 */
     taskList.addEventListener("click", removeTask)
 
-    /* step 4 */
     clearBtn.addEventListener("click", clearTasks)
 
-    /* step 5 */
     filter.addEventListener("keyup", filterTasks)
-
 }
 
 
@@ -55,7 +50,7 @@ function getTasks() {
         li.appendChild(document.createTextNode(task))
         //  Create new link element - the delete 'X' icon at the end 
         const link = document.createElement("a")
-        link.className = "delete-item secondary-content" /* Add class, dont use classList.add - would not work the intended way */
+        link.className = "delete-item secondary-content" /* Add className, dont use classList.add - would not work the intended way */
         link.innerHTML = '<i class ="fa fa-remove"></i>' /* Add icon html */
         li.appendChild(link) /* Add link to li */
         taskList.appendChild(li); /* Add li to variable taskInput above so that the list starts forming */
@@ -172,7 +167,8 @@ function filterTasks(e) {
     //  The lowerCase() has been used to facilitate easy comparison
 
     /* Step 11 */
-
+    let x = document.querySelectorAll(".collection-item")
+    console.log(x)
     document.querySelectorAll(".collection-item").forEach(function (task) {
         const item = task.firstChild.textContent;
         console.log(task.firstChild)
